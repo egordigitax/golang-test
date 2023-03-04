@@ -4,6 +4,7 @@ import (
 	"farm/internal/scripts"
 	"farm/internal/types"
 	"math/rand"
+	"strconv"
 	"time"
 )
 
@@ -35,11 +36,13 @@ func (c *Consumer) StartConsume(target *Refrigerator) {
 		if target.Eggs >= consumeAmount {
 			target.Eggs -= consumeAmount
 		} else {
-			target.Eggs -= target.Eggs
+			consumeAmount = target.Eggs
+			target.Eggs -= consumeAmount
 		}
 
 		if debugMode == true {
-			println(target.Eggs)
+			println("Consumed: " + strconv.Itoa(consumeAmount))
+			println("Eggs: " + strconv.Itoa(target.Eggs))
 		}
 	}
 }
