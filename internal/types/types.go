@@ -5,4 +5,9 @@ type AppConfig struct {
 	ChickenMaxEgg      int
 	ChickenMinInterval int
 	ChickenMaxInterval int
+
+	ConsumerMinInterval int
+	ConsumerMaxInterval int
+	ConsumerMinAmount   int
+	ConsumerMaxAmount   int
 }

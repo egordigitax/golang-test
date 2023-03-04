@@ -13,10 +13,10 @@ type Chicken struct {
 	EggsMaxInterval int
 }
 
-func NewChickens(count int, config types.AppConfig) []Chicken {
-	var arr []Chicken
+func NewChickens(count int, config types.AppConfig) []*Chicken {
+	var arr []*Chicken
 	for i := 0; i < count; i++ {
-		arr = append(arr, Chicken{
+		arr = append(arr, &Chicken{
 			EggsMinAmount:   config.ChickenMinEgg,
 			EggsMaxAmount:   config.ChickenMaxEgg,
 			EggsMinInterval: config.ChickenMinInterval,

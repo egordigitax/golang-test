@@ -8,10 +8,15 @@ import (
 
 func StartApp() {
 	config := scripts.GetDefaultConfig()
+
 	chickens := services.NewChickens(5, config)
-	f := services.NewFarm(chickens)
+	consumer := services.NewConsumer(config)
+
+	f := services.NewFarm(chickens, consumer)
 	f.Start()
+
 	h := rest.NewHandler()
 	h.R = f.Refrigerator
+
 	h.Start()
 }
