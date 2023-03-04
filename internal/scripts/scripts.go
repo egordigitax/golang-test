@@ -13,5 +13,7 @@ func GetDefaultConfig() types.AppConfig {
 		ConsumerMinAmount:   10,
 		ConsumerMaxInterval: 15,
 		ConsumerMinInterval: 10,
+
+		DebugMode: true,
 	}
 }

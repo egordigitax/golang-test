@@ -1,6 +1,7 @@
 package services
 
 import (
+	"farm/internal/scripts"
 	"farm/internal/types"
 	"math/rand"
 	"time"
@@ -23,6 +24,8 @@ func NewConsumer(config types.AppConfig) *Consumer {
 }
 
 func (c *Consumer) StartConsume(target *Refrigerator) {
+	debugMode := scripts.GetDefaultConfig().DebugMode
+
 	for {
 		consumeTime := time.Duration(rand.Intn(c.ConsumeMaxInterval-c.ConsumeMinInterval) + c.ConsumeMinInterval)
 		consumeAmount := rand.Intn(c.ConsumeMaxAmount-c.ConsumeMinAmount) + c.ConsumeMinAmount
@@ -35,6 +38,8 @@ func (c *Consumer) StartConsume(target *Refrigerator) {
 			target.Eggs -= target.Eggs
 		}
 
-		println(target.Eggs)
+		if debugMode == true {
+			println(target.Eggs)
+		}
 	}
 }

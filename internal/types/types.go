@@ -10,4 +10,6 @@ type AppConfig struct {
 	ConsumerMaxInterval int
 	ConsumerMinAmount   int
 	ConsumerMaxAmount   int
+
+	DebugMode bool
 }
