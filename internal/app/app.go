@@ -15,7 +15,7 @@ func StartApp() {
 	f := services.NewFarm(chickens, consumer)
 	f.Start()
 
-	h := rest.NewHandler()
+	h := rest.NewHandler("8000")
 	h.R = f.Refrigerator
 
 	h.Start()

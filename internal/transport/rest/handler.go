@@ -7,17 +7,18 @@ import (
 )
 
 type Handler struct {
-	g *gin.Engine
-	R *services.Refrigerator
+	g    *gin.Engine
+	R    *services.Refrigerator
+	port string
 }
 
-func NewHandler() *Handler {
-	return &Handler{g: gin.Default()}
+func NewHandler(port string) *Handler {
+	return &Handler{g: gin.Default(), port: port}
 }
 
 func (h *Handler) Start() {
-	h.g.GET("/refrigerator/eggs", func(c *gin.Context) {
+	h.g.GET("/refrigerator", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"Eggs": h.R.Eggs})
 	})
-	h.g.Run("127.0.0.1:8000")
+	h.g.Run("0.0.0.0:" + h.port)
 }
