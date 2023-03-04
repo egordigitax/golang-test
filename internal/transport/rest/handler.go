@@ -20,5 +20,8 @@ func (h *Handler) Start() {
 	h.g.GET("/refrigerator", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"Eggs": h.R.Eggs})
 	})
-	h.g.Run("0.0.0.0:" + h.port)
+	err := h.g.Run("0.0.0.0:" + h.port)
+	if err != nil {
+		return
+	}
 }
