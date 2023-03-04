@@ -2,11 +2,11 @@
 
 ### Как запустить:
 
-- `sudo docker-compose up --build -d`
+- `make docker` / `sudo docker-compose up --build -d`
 
 или
 
-- `go run ./cmd/app`
+- `make run` / `go run ./cmd/app`
 
 
 ### Параметры по умолчанию:
